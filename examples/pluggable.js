@@ -9,17 +9,13 @@ module.exports = class Pluggable {
                 '--disable-gpu',
                 '--window-size=1920x1080',
                 '--hide-scrollbars',
-                '--user-agent=Chrome',
+                '--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3835.0 Safari/537.36',
             ],
-            userAgent = 'Chrome',
             headless = true,
         } = options;
 
         this.chromeFlags = chromeFlags;
-        this.userAgent = userAgent;
         this.headless = headless;
-
-        this.chromeFlags.push(this.userAgent);
     }
 
     async close_browser() {
@@ -64,5 +60,10 @@ module.exports = class Pluggable {
         console.log(launch_args);
 
         return this.browser;
+    }
+
+    async do_work(page) {
+        // do some scraping work and return results and num_requests
+
     }
 };
